@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Trabajos | GO SIX MORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            background: #0b335c; /* Tu azul oscuro */
+            color: white;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .catalogo-header {
+            background-color: #082646;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .catalogo-header .logo-img { height: 40px; }
+
+        .btn-volver {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .btn-volver:hover { color: #4da6ff; }
+
+        .catalogo-titulo {
+            text-align: center;
+            padding: 50px 20px 30px;
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* --- CUADRÍCULA DEL CATÁLOGO --- */
+        .catalogo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .catalogo-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .catalogo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .catalogo-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* --- VENTANA EMERGENTE (LIGHTBOX) --- */
+        .lightbox {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.mostrar {
+            display: flex; /* Se muestra al hacer clic */
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            object-fit: contain;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.mostrar .lightbox-img {
+            transform: scale(1);
+        }
+
+        .cerrar-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .cerrar-lightbox:hover {
+            color: #4da6ff;
+        }
+
+        /* Flechas para navegar en el carrusel */
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s, transform 0.2s;
+            z-index: 10000;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-btn.prev { left: 30px; }
+        .lightbox-btn.next { right: 30px; }
+
+        @media (max-width: 768px) {
+            .catalogo-grid { padding: 20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .lightbox-btn { padding: 10px; font-size: 1.5rem; }
+            .lightbox-btn.prev { left: 10px; }
+            .lightbox-btn.next { right: 10px; }
+            .cerrar-lightbox { top: 10px; right: 20px; font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superior -->
+    <header class="catalogo-header">
+        <img src="./img/1.png" alt="GO SIX MORE" class="logo-img">
+        <a href="index.html" class="btn-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Inicio</a>
+    </header>
+
+    <!-- Título -->
+    <h1 class="catalogo-titulo">Nuestros Trabajos</h1>
+
+    <!-- Cuadrícula del catálogo -->
+    <div class="catalogo-grid">
+        <div class="catalogo-item"><img src="./trabajos/1.jpg" alt="Trabajo 1"></div>
+        <div class="catalogo-item"><img src="./trabajos/2.jpg" alt="Trabajo 2"></div>
+        <div class="catalogo-item"><img src="./trabajos/3.jpg" alt="Trabajo 3"></div>
+        <div class="catalogo-item"><img src="./trabajos/4.jpeg" alt="Trabajo 4"></div>
+        <div class="catalogo-item"><img src="./trabajos/5.jpg" alt="Trabajo 5"></div>
+        <div class="catalogo-item"><img src="./trabajos/6.jpg" alt="Trabajo 6"></div>
+        <div class="catalogo-item"><img src="./trabajos/7.jpg" alt="Trabajo 7"></div>
+        <div class="catalogo-item"><img src="./trabajos/8.jpg" alt="trabajo 8"></div>
+        <div class="catalogo-item"><img src="./trabajos/9.jpg" alt="Trabajo 9"></div>
+        <div class="catalogo-item"><img src="./trabajos/10.jpeg" alt="Trabajo 10"></div>
+        <div class="catalogo-item"><img src="./trabajos/11.jpeg" alt="Trabajo 11"></div>
+        <div class="catalogo-item"><img src="./trabajos/12.jpeg" alt="Trabajo 12"></div>
+        <div class="catalogo-item"><img src="./trabajos/13.jpeg" alt="Trabajo 13"></div>
+        <div class="catalogo-item"><img src="./trabajos/14.jpg" alt="Trabajo 14"></div>
+        <div class="catalogo-item"><img src="./trabajos/15.jpg" alt="Trabajo 15"></div>
+        <div class="catalogo-item"><img src="./trabajos/16.jpg" alt="Trabajo 16"></div>
+        <div class="catalogo-item"><img src="./trabajos/17.jpg" alt="Trabajo 17"></div>
+        <div class="catalogo-item"><img src="./trabajos/18.jpg" alt="Trabajo 18"></div>
+        <div class="catalogo-item"><img src="./trabajos/19.jpg" alt="Trabajo 19"></div>
+        <div class="catalogo-item"><img src="./trabajos/20.jpg" alt="Trabajo 20"></div>
+        <div class="catalogo-item"><img src="./trabajos/21.jpg" alt="Trabajo 21"></div>
+        <div class="catalogo-item"><img src="./trabajos/22.jpg" alt="Trabajo 22"></div>
+        <div class="catalogo-item"><img src="./trabajos/23.jpg" alt="Trabajo 23"></div>
+        <div class="catalogo-item"><img src="./trabajos/24.jpg" alt="Trabajo 24"></div>
+        <div class="catalogo-item"><img src="./trabajos/25.jpg" alt="Trabajo 25"></div>
+        <div class="catalogo-item"><img src="./trabajos/26.jpg" alt="Trabajo 26"></div>
+        <div class="catalogo-item"><img src="./trabajos/27.jpg" alt="Trabajo 27"></div>
+
+    </div>
+
+    <!-- Ventana emergente (Lightbox / Carrusel) -->
+    <div id="lightbox" class="lightbox">
+        <span class="cerrar-lightbox">&times;</span>
+        
+        <button class="lightbox-btn prev" id="btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <img class="lightbox-img" id="img-ampliada" src="" alt="Imagen ampliada">
+        <button class="lightbox-btn next" id="btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <!-- SCRIPT PARA LA VENTANA EMERGENTE -->
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const imgAmpliada = document.getElementById('img-ampliada');
+        const imagenesCatalogo = document.querySelectorAll('.catalogo-item img');
+        const btnCerrar = document.querySelector('.cerrar-lightbox');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+
+        let indiceActual = 0; // Guarda la posición de la imagen que se está viendo
+
+        // Abrir la ventana emergente al hacer clic en una foto
+        imagenesCatalogo.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                indiceActual = index; 
+                mostrarImagenEnLightbox();
+            });
+        });
+
+        function mostrarImagenEnLightbox() {
+            lightbox.style.display = 'flex'; 
+            // Pequeño retraso para que la animación de escala funcione
+            setTimeout(() => {
+                lightbox.classList.add('mostrar');
+            }, 10);
+            imgAmpliada.src = imagenesCatalogo[indiceActual].src; 
+        }
+
+        // Botón Anterior
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            indiceActual--;
+            if (indiceActual < 0) {
+                indiceActual = imagenesCatalogo.length - 1; // Vuelve a la última
+            }
+            imgAmpliada.src = imagenesCatalogo[indiceActual].src;
+        });
+
+        // Botón Siguiente
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            indiceActual++;
+            if (indiceActual >= imagenesCatalogo.length) {
+                indiceActual = 0; // Vuelve a la primera
+            }
+            imgAmpliada.src = imagenesCatalogo[indiceActual].src;
+        });
+
+        // Cerrar ventana con la 'X'
+        btnCerrar.addEventListener('click', cerrarLightbox);
+
+        // Cerrar si se hace clic fuera de la imagen
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== imgAmpliada && e.target !== btnPrev && e.target !== btnNext && !btnPrev.contains(e.target) && !btnNext.contains(e.target)) {
+                cerrarLightbox();
+            }
+        });
+
+        function cerrarLightbox() {
+            lightbox.classList.remove('mostrar');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+            }, 300); // Espera a que termine la animación
+        }
+
+        // Navegar con el teclado (Flechas izquierda/derecha y Escape)
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') btnPrev.click();
+                if (e.key === 'ArrowRight') btnNext.click();
+                if (e.key === 'Escape') cerrarLightbox();
+            }
+        });
+    </script>
+
+</body>
+</html>

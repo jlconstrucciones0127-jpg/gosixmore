@@ -10,6 +10,21 @@
 </head>
 <body>
 
+<!-- ═══════════════ NUEVO: PANTALLA DE BIENVENIDA ═══════════════ -->
+<div id="overlay-bienvenida" role="dialog" aria-label="Bienvenida">
+  <div class="overlay-contenido">
+    <img src="./img/1.png" alt="GO SIX MORE" class="overlay-logo">
+    <h1>GO SIX MORE</h1>
+    <p>Construimos tus sueños</p>
+    <button id="btn-entrar" aria-label="Entrar al sitio">
+      Entrar <i class="fa-solid fa-volume-high"></i>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════ NUEVO: AUDIO DE ENTRADA ═══════════════ -->
+<audio id="sonido-entrada" src="./audio/bienvenida.mp3" preload="auto"></audio>
+
 <!-- ============================================= -->
 <!-- HERO (Portada principal)                      -->
 <!-- ============================================= -->
@@ -23,7 +38,7 @@
       <a href="#nosotros">Nosotros</a>
       <a href="#acerca">Acerca</a>
       <a href="#servicios">Servicios</a>
-      <a href="#trabajos">Trabajos</a>
+      <a href="catalogo.html">Trabajos</a>
       <a href="#contacto">Contacto</a>
 
       <a href="./documentos/CURRIICULUM GO SIX JR01.pdf" target="_blank" class="nav-cv">
@@ -37,14 +52,13 @@
     <p>Construimos tus sueños</p>
   </div>
 
-  
-<div class="hero-image"></div>
+  <div class="hero-image"></div>
 
-<!-- Código QR de GO SIX MORE -->
-<div class="hero-qr">
+  <!-- Código QR de GO SIX MORE -->
+  <div class="hero-qr">
     <img src="./img/qr-code.png" alt="Código QR de GO SIX MORE">
-    <p>Escanea y Encuentranos </p>
-</div>
+    <p>Escanea y Encuentranos</p>
+  </div>
 
 </div>
 
@@ -56,10 +70,10 @@
 <!-- Sección Nosotros (FONDO BLANCO) -->
 <section id="nosotros" class="section section-nosotros">
   <div class="nosotros-container">
-    
+
     <!-- Fila superior: Estadísticas -->
     <div class="stats-grid">
-      
+
       <!-- Icono 1: Clientes Satisfechos -->
       <div class="stat-item">
         <div class="stat-icon">
@@ -111,9 +125,9 @@
       <div class="nosotros-text">
         <h2>QUIENES SOMOS</h2>
         <p class="intro-text">
-        En <b style="color:black;">Go Six More</b>, tenemos el objetivo de brindar los servicios de proyecto, construcción, supervisión y consultoría, así como asesorías de seguridad e higiene para el correcto funcionamiento y mantenimiento integral enfocado al ramo habitacional, administrativo, comercio e industria en general, procurando en todo momento aplicar políticas de calidad, precio y prestigio de los servicios brindados, así como confidencialidad en cuanto a los trabajos realizados en su documentación como en su ejecución de los mismos. 
+        En <b style="color:black;">Go Six More</b>, tenemos el objetivo de brindar los servicios de proyecto, construcción, supervisión y consultoría, así como asesorías de seguridad e higiene para el correcto funcionamiento y mantenimiento integral enfocado al ramo habitacional, administrativo, comercio e industria en general, procurando en todo momento aplicar políticas de calidad, precio y prestigio de los servicios brindados, así como confidencialidad en cuanto a los trabajos realizados en su documentación como en su ejecución de los mismos.
         </p>
-        
+
         <ul class="features-list">
           <li><span class="check">✔</span> Calidad del Trabajo</li>
           <li><span class="check">✔</span> Cumplimiento de Plazos</li>
@@ -122,7 +136,7 @@
         </ul>
 
         <p class="outro-text">
-         Nuestra empresa se rige bajo un código de ética estricto el cual garantiza la calidad y profesionalismo de nuestros servicios. La experiencia acumulada del equipo de trabajo técnico, así como la capacidad y calidad de la mano de obra del personal operativo, garantizan un servicio altamente calificado en calidad y costo. 
+         Nuestra empresa se rige bajo un código de ética estricto el cual garantiza la calidad y profesionalismo de nuestros servicios. La experiencia acumulada del equipo de trabajo técnico, así como la capacidad y calidad de la mano de obra del personal operativo, garantizan un servicio altamente calificado en calidad y costo.
         </p>
        </div>
        <div class="nosotros-image">
@@ -136,7 +150,7 @@
 <!-- Sección Acerca / Tarjetas (FONDO AZUL) -->
 <section id="acerca" class="section section-tarjetas section-blue">
   <div class="tarjetas-container">
-    
+
     <!-- Tarjeta 1: Misión -->
     <div class="tarjeta">
       <div class="tarjeta-img">
@@ -191,10 +205,10 @@
 
       <!-- Menú de Pestañas -->
       <div class="tabs-nav">
-          <button class="tab-btn active" onclick="openTab(event, 'tab-construccion')">Construcción y Acabados</button>
-          <button class="tab-btn" onclick="openTab(event, 'tab-proyectos')">Proyectos y Dirección</button>
-          <button class="tab-btn" onclick="openTab(event, 'tab-gestion')">Gestión y Seguridad</button>
-          <button class="tab-btn" onclick="openTab(event, 'tab-remodelacion')">Remodelación</button>
+          <button class="tab-btn active" data-tab="tab-construccion">Construcción y Acabados</button>
+          <button class="tab-btn" data-tab="tab-proyectos">Proyectos y Dirección</button>
+          <button class="tab-btn" data-tab="tab-gestion">Gestión y Seguridad</button>
+          <button class="tab-btn" data-tab="tab-remodelacion">Remodelación</button>
       </div>
 
       <!-- Pestaña 1: Construcción y Acabados -->
@@ -216,7 +230,7 @@
                   <h3><i class="fa-solid fa-bolt"></i> Instalaciones</h3>
                   <p>Eléctricas media y alta tensión, hidrosanitarias, gas, cableado estructurado, circuito cerrado, contra incendios y especiales.</p>
               </div>
-              
+
               <!-- INFRAESTRUCTURA AMPLIADA -->
               <div class="service-card">
                   <h3><i class="fa-solid fa-road"></i> Infraestructura Vial</h3>
@@ -254,7 +268,7 @@
       <!-- Pestaña 3: Gestión y Seguridad -->
       <div id="tab-gestion" class="tab-content">
           <div class="service-grid">
-              
+
               <!-- CONSULTORÍA AMPLIADA -->
               <div class="service-card">
                   <h3><i class="fa-solid fa-briefcase"></i> Consultoría Técnica</h3>
@@ -298,59 +312,13 @@
 </section>
 
 
-<!-- Sección Trabajos (FONDO AZUL con Galería) -->
-<section id="trabajos" class="section section-trabajos section-blue">
-  <div class="trabajos-container">
-    
-    <!-- Título -->
-    <div class="trabajos-header">
-      <h2>Nuestros Trabajos</h2>
-    </div>
-
-    <!-- Galería Principal -->
-    <div class="galeria-wrapper">
-      
-      <!-- Imagen Grande con Flechas -->
-      <div class="galeria-principal">
-        <button class="galeria-btn prev" onclick="cambiarImagen(-1)">&#10094;</button>
-        <img id="imagen-principal" src="./trabajos/trabajo1.jpeg" alt="Proyecto GO SIX MORE">
-        <button class="galeria-btn next" onclick="cambiarImagen(1)">&#10095;</button>
-      </div>
-
-      <!-- Miniaturas (19 imágenes) -->
-      <div class="galeria-miniaturas">
-        <img src="./trabajos/trabajo1.jpeg"  alt="Miniatura 1"  class="miniatura active" onclick="seleccionarImagen(0)">
-        <img src="./trabajos/trabajo2.jpeg"  alt="Miniatura 2"  class="miniatura" onclick="seleccionarImagen(1)">
-        <img src="./trabajos/trabajo3.jpeg"  alt="Miniatura 3"  class="miniatura" onclick="seleccionarImagen(2)">
-        <img src="./trabajos/trabajo4.jpeg"  alt="Miniatura 4"  class="miniatura" onclick="seleccionarImagen(3)">
-        <img src="./trabajos/trabajo5.jpeg"  alt="Miniatura 5"  class="miniatura" onclick="seleccionarImagen(4)">
-        <img src="./trabajos/trabajo6.jpeg"  alt="Miniatura 6"  class="miniatura" onclick="seleccionarImagen(5)">
-        <img src="./trabajos/trabajo7.jpeg"  alt="Miniatura 7"  class="miniatura" onclick="seleccionarImagen(6)">
-        <img src="./trabajos/trabajo8.jpeg"  alt="Miniatura 8"  class="miniatura" onclick="seleccionarImagen(7)">
-        <img src="./trabajos/trabajo9.jpeg"  alt="Miniatura 9"  class="miniatura" onclick="seleccionarImagen(8)">
-        <img src="./trabajos/trabajo10.jpeg" alt="Miniatura 10" class="miniatura" onclick="seleccionarImagen(9)">
-        <img src="./trabajos/trabajo11.jpeg" alt="Miniatura 11" class="miniatura" onclick="seleccionarImagen(10)">
-        <img src="./trabajos/trabajo12.jpeg" alt="Miniatura 12" class="miniatura" onclick="seleccionarImagen(11)">
-        <img src="./trabajos/trabajo13.jpeg" alt="Miniatura 13" class="miniatura" onclick="seleccionarImagen(12)">
-        <img src="./trabajos/trabajo14.jpeg" alt="Miniatura 14" class="miniatura" onclick="seleccionarImagen(13)">
-        <img src="./trabajos/trabajo15.jpeg" alt="Miniatura 15" class="miniatura" onclick="seleccionarImagen(14)">
-        <img src="./trabajos/trabajo16.jpeg" alt="Miniatura 16" class="miniatura" onclick="seleccionarImagen(15)">
-        <img src="./trabajos/trabajo17.jpeg" alt="Miniatura 17" class="miniatura" onclick="seleccionarImagen(16)">
-        <img src="./trabajos/trabajo18.jpeg" alt="Miniatura 18" class="miniatura" onclick="seleccionarImagen(17)">
-        <img src="./trabajos/trabajo19.jpeg" alt="Miniatura 19" class="miniatura" onclick="seleccionarImagen(18)">
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ==========================================
      SECCIÓN DE CONTACTO - ESTRUCTURA ACTUALIZADA
      ========================================== -->
 
 <section class="contacto-section">
     <div class="contacto-container">
-        
+
         <!-- Encabezado de la sección -->
         <div class="contacto-header">
             <h2>Contacto</h2>
@@ -359,12 +327,12 @@
 
         <!-- Grid Principal (2 Columnas) -->
         <div class="contacto-grid">
-            
+
             <!-- Columna Izquierda: Atención Directa (DATOS ACTUALIZADOS) -->
             <div class="contacto-card">
                 <div>
                     <h3>Información de Contacto</h3>
-                    
+
                     <!-- Domicilio -->
                     <div class="canal-item">
                         <div class="canal-icono"><i class="fa-solid fa-location-dot"></i></div>
@@ -391,8 +359,6 @@
                             <p>
                                 Arq. Víctor Oscar Crescencio Almonaci <br>(55) 6655 8055<br><br>
                                 Lic. Luis Arturo Almonaci Luna   <br>     (55) 8014 1090
-                                
-                                
                             </p>
                         </div>
                     </div>
@@ -408,8 +374,7 @@
             <div class="contacto-card">
                 <div>
                     <h3>Envíanos un mensaje</h3>
-                    
-                    
+
 <form action="https://formspree.io/f/xljgojby" method="POST">
 
     <div class="form-group">
@@ -473,9 +438,9 @@
 <!-- ============================================= -->
 <!-- BOTÓN FLOTANTE DE WHATSAPP                    -->
 <!-- ============================================= -->
-<a href="https://wa.me/525580141090?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n" 
-   class="whatsapp-btn" 
-   target="_blank" 
+<a href="https://wa.me/525580141090?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n"
+   class="whatsapp-btn"
+   target="_blank"
    rel="noopener noreferrer"
    aria-label="Contactar por WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="35" height="35" fill="white">
@@ -483,65 +448,8 @@
   </svg>
 </a>
 
-<!-- Script para el control de pestañas de Servicios -->
-<script>
-    function openTab(evt, tabName) {
-        const contents = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < contents.length; i++) {
-            contents[i].classList.remove("active");
-        }
-
-        const buttons = document.getElementsByClassName("tab-btn");
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].classList.remove("active");
-        }
-
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-</script>
-
-<!-- Script para la Galería de Trabajos -->
-<script>
-    const imagenes = [
-        "./trabajos/trabajo1.jpeg", "./trabajos/trabajo2.jpeg", "./trabajos/trabajo3.jpeg",
-        "./trabajos/trabajo4.jpeg", "./trabajos/trabajo5.jpeg", "./trabajos/trabajo6.jpeg",
-        "./trabajos/trabajo7.jpeg", "./trabajos/trabajo8.jpeg", "./trabajos/trabajo9.jpeg",
-        "./trabajos/trabajo10.jpeg", "./trabajos/trabajo11.jpeg", "./trabajos/trabajo12.jpeg",
-        "./trabajos/trabajo13.jpeg", "./trabajos/trabajo14.jpeg", "./trabajos/trabajo15.jpeg",
-        "./trabajos/trabajo16.jpeg", "./trabajos/trabajo17.jpeg", "./trabajos/trabajo18.jpeg",
-        "./trabajos/trabajo19.jpeg"
-    ];
-
-    let indiceActual = 0;
-
-    function actualizarGaleria() {
-        const imgPrincipal = document.getElementById("imagen-principal");
-        const miniaturas = document.querySelectorAll(".miniatura");
-
-        imgPrincipal.style.opacity = 0;
-        setTimeout(() => {
-            imgPrincipal.src = imagenes[indiceActual];
-            imgPrincipal.style.opacity = 1;
-        }, 200);
-
-        miniaturas.forEach((min, index) => {
-            min.classList.toggle("active", index === indiceActual);
-        });
-    }
-
-    function cambiarImagen(direccion) {
-        indiceActual += direccion;
-        if (indiceActual < 0) indiceActual = imagenes.length - 1;
-        if (indiceActual >= imagenes.length) indiceActual = 0;
-        actualizarGaleria();
-    }
-
-    function seleccionarImagen(index) {
-        indiceActual = index;
-        actualizarGaleria();
-    }
-</script>
+<!-- ═══════════════ NUEVO: JavaScript externo ═══════════════ -->
+<script src="./js/script.js"></script>
 
 </body>
 </html>
